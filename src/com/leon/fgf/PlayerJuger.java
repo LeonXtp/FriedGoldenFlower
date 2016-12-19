@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * 牌型判断比较器，负责对所有玩家的牌大小进行计算和排序
+ * 鐗屽瀷鍒ゆ柇姣旇緝鍣紝璐熻矗瀵规墍鏈夌帺瀹剁殑鐗屽ぇ灏忚繘琛岃绠楀拰鎺掑簭
  * 
  * @author Leon
  *

@@ -1,52 +1,52 @@
 package com.leon.fgf;
 
 /**
- * ¶ÔÅÆĞÍ·ÖÀà£¬²¢Ìá¹©ÅÆ´óĞ¡ÖµµÄËã·¨£¬ºÍÒÑ¾­¼ÆËãºÃµÄÅÆĞÍ×î´óÖµ
+ * å¯¹ç‰Œå‹åˆ†ç±»ï¼Œå¹¶æä¾›ç‰Œå¤§å°å€¼çš„ç®—æ³•ï¼Œå’Œå·²ç»è®¡ç®—å¥½çš„ç‰Œå‹æœ€å¤§å€¼
  * 
  * @author Leon
  *
  */
 public class PlayerType {
-	// Õ¨µ¯
+	// ç‚¸å¼¹
 	public static final int BOMB = 5;
-	// ×î´óÖµAAA=14£¬¼ÓÉÏÍ¬»¨Ë³6867=7881
+	// æœ€å¤§å€¼AAA=14ï¼ŒåŠ ä¸ŠåŒèŠ±é¡º6867=7881
 	public static final int BOMB_MAX_VALUE = 7881;
-	// ×îĞ¡Öµ222=2£¬¼ÓÉÏÍ¬»¨Ë³6867=7869
+	// æœ€å°å€¼222=2ï¼ŒåŠ ä¸ŠåŒèŠ±é¡º6867=7869
 	public static final int BOMB_MIN_VALUE = 7869;
 
-	// Í¬»¨Ë³
+	// åŒèŠ±é¡º
 	public static final int STRAIGHT_FLUSH = 4;
-	// ×î´óÖµAKQ=12£¬¼ÓÉÏÍ¬»¨7855=7867
+	// æœ€å¤§å€¼AKQ=12ï¼ŒåŠ ä¸ŠåŒèŠ±7855=7867
 	public static final int STRAIGHT_FLUSH_MAX_VALUE = 7867;
-	// ×îĞ¡Öµ432=2£¬ ¼ÓÉÏÍ¬»¨7855=7857
+	// æœ€å°å€¼432=2ï¼Œ åŠ ä¸ŠåŒèŠ±7855=7857
 	public static final int STRAIGHT_FLUSH_MIN_VALUE = 7857;
 
-	// Í¬»¨
+	// åŒèŠ±
 	public static final int FLUSH = 3;
-	// ×î´óÖµAKJ£¬14*16*16+13*16+11=3803£¬¼ÓÉÏË³×Ó4052=7855
+	// æœ€å¤§å€¼AKJï¼Œ14*16*16+13*16+11=3803ï¼ŒåŠ ä¸Šé¡ºå­4052=7855
 	public static final int FLUSH_MAX_VALUE = 7855;
-	// ×îĞ¡Öµ532£¬5*16*16+3*16+2=1330£¬¼ÓÉÏË³×Ó4052=5382
+	// æœ€å°å€¼532ï¼Œ5*16*16+3*16+2=1330ï¼ŒåŠ ä¸Šé¡ºå­4052=5382
 	public static final int FLUSH_MIN_VALUE = 5382;
 
-	// Ë³×Ó
+	// é¡ºå­
 	public static final int STRAIGHT = 2;
-	// ×î´óÖµAKQ=12£¬¼ÓÉÏ¶Ô×ÓµÄ×î´óÖµ»ùÊı4040=4052
+	// æœ€å¤§å€¼AKQ=12ï¼ŒåŠ ä¸Šå¯¹å­çš„æœ€å¤§å€¼åŸºæ•°4040=4052
 	public static final int STRAIGHT_MAX_VALUE = 4052;
-	// ×îĞ¡Öµ432=2£¬¼ÓÉÏ¶Ô×ÓµÄ×î´ó»ùÊı4040=4042
+	// æœ€å°å€¼432=2ï¼ŒåŠ ä¸Šå¯¹å­çš„æœ€å¤§åŸºæ•°4040=4042
 	public static final int STRAIGHT_MIN_VALUE = 4042;
 
-	// ¶Ô×Ó
+	// å¯¹å­
 	public static final int DOUBLE = 1;
-	// ×î´óÖµAAK=14*16+13=237,¼ÓÉÏÆÕÍ¨ÅÆµÄ»ùÊı3803=4040
+	// æœ€å¤§å€¼AAK=14*16+13=237,åŠ ä¸Šæ™®é€šç‰Œçš„åŸºæ•°3803=4040
 	public static final int DOUBLE_MAX_VALUE = 4040;
-	// ×îĞ¡Öµ223=2*16+3=35£¬¼ÓÉÏÆÕÍ¨ÅÆµÄ»ùÊı3803=3838
+	// æœ€å°å€¼223=2*16+3=35ï¼ŒåŠ ä¸Šæ™®é€šç‰Œçš„åŸºæ•°3803=3838
 	public static final int DOUBLE_MIN_VALUE = 3838;
 
-	// ÆÕÍ¨ÅÆ£¬ÀïÃæ°üº¬Ò»ÖÖÌØÊâÅÆ532²»Í¬»¨É«
+	// æ™®é€šç‰Œï¼Œé‡Œé¢åŒ…å«ä¸€ç§ç‰¹æ®Šç‰Œ532ä¸åŒèŠ±è‰²
 	public static final int NORMAL = 0;
-	// ×î´óÖµAKJ=14*16*16+13*16+11=3803
+	// æœ€å¤§å€¼AKJ=14*16*16+13*16+11=3803
 	public static final int NORMAL_MAX_VALUE = 3803;
-	// ×îĞ¡Öµ532=5*16*16+3*16+2=1330
+	// æœ€å°å€¼532=5*16*16+3*16+2=1330
 	public static final int NORMAL_MIN_VALUE = 1330;
 
 }

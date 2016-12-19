@@ -3,18 +3,18 @@ package com.leon.fgf;
 import java.util.List;
 
 /**
- * ×¯¼Ò£¬¸ºÔğÏ´ÅÆ£¬·¢ÅÆ£¬±È½ÏÅÆ
+ * åº„å®¶ï¼Œè´Ÿè´£æ´—ç‰Œï¼Œå‘ç‰Œï¼Œæ¯”è¾ƒç‰Œ
  * 
  * @author Leon
  *
  */
 public class Dealer {
 
-	// ²âÊÔ½á¹û£º
-	// ·¢³ö1000¸±ÅÆºÄÊ±3ºÁÃë£¬¼ÆËãÅÆ´óĞ¡²¢ÅÅĞòºÄÊ±5ºÁÃë
-	// ·¢³ö10000¸±ÅÆºÄÊ±10ºÁÃë£¬¼ÆËãÅÆ´óĞ¡²¢ÅÅĞòºÄÊ±19ºÁÃë
-	// ·¢³ö100000¸±ÅÆºÄÊ±39ºÁÃë£¬¼ÆËãÅÆ´óĞ¡²¢ÅÅĞòºÄÊ±85ºÁÃë
-	// ÆäËûĞèÒªÇë×ÔĞĞ²âÊÔ
+	// æµ‹è¯•ç»“æœï¼š
+	// å‘å‡º1000å‰¯ç‰Œè€—æ—¶3æ¯«ç§’ï¼Œè®¡ç®—ç‰Œå¤§å°å¹¶æ’åºè€—æ—¶5æ¯«ç§’
+	// å‘å‡º10000å‰¯ç‰Œè€—æ—¶10æ¯«ç§’ï¼Œè®¡ç®—ç‰Œå¤§å°å¹¶æ’åºè€—æ—¶19æ¯«ç§’
+	// å‘å‡º100000å‰¯ç‰Œè€—æ—¶39æ¯«ç§’ï¼Œè®¡ç®—ç‰Œå¤§å°å¹¶æ’åºè€—æ—¶85æ¯«ç§’
+	// å…¶ä»–éœ€è¦è¯·è‡ªè¡Œæµ‹è¯•
 	private static final int PlayerNumber = 1000;
 
 	public static void main(String args[]) {
@@ -50,7 +50,7 @@ public class Dealer {
 
 	private static void printPlayers(List<Player> players) {
 		for (int i = 0; i < PlayerNumber; i++) {
-			System.out.print("Íæ¼Ò_" + i + "_µÄÅÆ£º");
+			System.out.print("ç©å®¶_" + i + "_çš„ç‰Œï¼š");
 			for (int j = 0; j < 3; j++) {
 				printCard(players.get(i).cards[j]);
 			}
@@ -64,16 +64,16 @@ public class Dealer {
 		int number = card.getNumber();
 		switch (flower) {
 		case Card.FLOWER_SPADE:
-			System.out.print("ºÚÌÒ" + getCardStringNumber(number));
+			System.out.print("é»‘æ¡ƒ" + getCardStringNumber(number));
 			break;
 		case Card.FLOWER_HEART:
-			System.out.print("ºìÌÒ" + getCardStringNumber(number));
+			System.out.print("çº¢æ¡ƒ" + getCardStringNumber(number));
 			break;
 		case Card.FLOWER_CLUB:
-			System.out.print("Ã·»¨" + getCardStringNumber(number));
+			System.out.print("æ¢…èŠ±" + getCardStringNumber(number));
 			break;
 		default:
-			System.out.print("·½Æ¬" + getCardStringNumber(number));
+			System.out.print("æ–¹ç‰‡" + getCardStringNumber(number));
 			break;
 		}
 		System.out.print(", ");
@@ -99,25 +99,25 @@ public class Dealer {
 		int value = player.getValue();
 		switch (type) {
 		case PlayerType.BOMB:
-			System.out.print("Õ¨µ¯," + value);
+			System.out.print("ç‚¸å¼¹," + value);
 			break;
 		case PlayerType.STRAIGHT_FLUSH:
-			System.out.print("Í¬»¨Ë³," + value);
+			System.out.print("åŒèŠ±é¡º," + value);
 			break;
 		case PlayerType.FLUSH:
-			System.out.print("Í¬»¨£¬" + value);
+			System.out.print("åŒèŠ±ï¼Œ" + value);
 			break;
 		case PlayerType.STRAIGHT:
-			System.out.print("Ë³×Ó," + value);
+			System.out.print("é¡ºå­," + value);
 			break;
 		case PlayerType.DOUBLE:
-			System.out.print("¶Ô×Ó," + value);
+			System.out.print("å¯¹å­," + value);
 			break;
 		default:
 			if (player.isSpecial()) {
-				System.out.print("ÌØÊâÅÆ," + value);
+				System.out.print("ç‰¹æ®Šç‰Œ," + value);
 			} else {
-				System.out.print("ÆÕÍ¨ÅÆ," + value);
+				System.out.print("æ™®é€šç‰Œ," + value);
 			}
 			break;
 		}

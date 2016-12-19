@@ -1,7 +1,7 @@
 package com.leon.fgf;
 
 /**
- * 玩家，对应一副牌
+ * 鐜╁
  * 
  * @author Leon
  *

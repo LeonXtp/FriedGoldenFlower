@@ -1,7 +1,7 @@
 package com.leon.fgf;
 
 /**
- * ÅĞ±ğÅÆĞÍ£¬²¢¶ÔÆä´óĞ¡½øĞĞ¼ÆËã
+ * åˆ¤åˆ«ç‰Œå‹ï¼Œå¹¶å¯¹å…¶å¤§å°è¿›è¡Œè®¡ç®—
  * @author Leon
  *
  */
@@ -9,23 +9,23 @@ public class ValueCalculator {
 
 	public void setupPlayer(Player player) {
 		if (isFlush(player)) {
-			if (isStraight(player)) {// Í¬»¨Ë³
+			if (isStraight(player)) {// åŒèŠ±é¡º
 				player.setType(PlayerType.STRAIGHT_FLUSH);
 				player.setValue(getStraightFlushValue(player));
-			} else {// Í¬»¨
+			} else {// åŒèŠ±
 				player.setType(PlayerType.FLUSH);
 				player.setValue(getFlushValue(player));
 			}
 		} else if (isStraight(player)) {
 			player.setType(PlayerType.STRAIGHT);
 			player.setValue(getStraightValue(player));
-		} else if (isDouble(player)) {// ¶Ô×Ó
-			if (isBmob(player)) {// Õ¨µ¯
+		} else if (isDouble(player)) {// å¯¹å­
+			if (isBmob(player)) {// ç‚¸å¼¹
 				player.setType(PlayerType.BOMB);
 				player.setValue(getBombValue(player));
 			} else {
 				player.setType(PlayerType.DOUBLE);
-				// ½«¶Ô×Ó·Åµ½Íæ¼ÒÅÆµÄÇ°Á½ÕÅµÄÎ»ÖÃ,ÒÔ±ãÓÚÖ®ºóµÄÅÆÖµ¼ÆËã
+				// å°†å¯¹å­æ”¾åˆ°ç©å®¶ç‰Œçš„å‰ä¸¤å¼ çš„ä½ç½®,ä»¥ä¾¿äºä¹‹åçš„ç‰Œå€¼è®¡ç®—
 				int temp = 0;
 				if (player.cards[1].getNumber() == player.cards[2].getNumber()) {
 					temp = player.cards[0].getNumber();
@@ -34,7 +34,7 @@ public class ValueCalculator {
 				}
 				player.setValue(getDoubleValue(player));
 			}
-		} else {// ÆÕÍ¨ÅÆ
+		} else {// æ™®é€šç‰Œ
 			player.setType(PlayerType.NORMAL);
 			player.setValue(getNormalValue(player));
 			if (isSpecial(player)) {
@@ -84,7 +84,7 @@ public class ValueCalculator {
 		return player.cards[2].getNumber() + PlayerType.DOUBLE_MAX_VALUE;
 	}
 
-	// ÔÚÅĞ¶ÏÅÆĞÍÊ±£¬Èç¹ûÊÇ¶Ô×Ó£¬Ôò½«¶Ô×Ó·ÅÔÚÊı×éÇ°ÃæÁ½Î»
+	// åœ¨åˆ¤æ–­ç‰Œå‹æ—¶ï¼Œå¦‚æœæ˜¯å¯¹å­ï¼Œåˆ™å°†å¯¹å­æ”¾åœ¨æ•°ç»„å‰é¢ä¸¤ä½
 	private int getDoubleValue(Player player) {
 		return player.cards[1].getNumber() * 16 + player.cards[2].getNumber() + PlayerType.NORMAL_MAX_VALUE;
 	}

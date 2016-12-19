@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * ·¢ÅÆÆ÷£¬½«²úÉúÖ¸¶¨¸öÍæ¼ÒÊıÁ¿µÄÅÆÊı£¬ÕâÀï²»ÏŞÖÆÍæ¼ÒµÄÊıÁ¿£¬²»¿¼ÂÇ²»Í¬µÄÍæ¼Ò³öÏÖÍêÈ«Í¬ÑùµÄÅÆ
+ * å‘ç‰Œå™¨ï¼Œå°†äº§ç”ŸæŒ‡å®šä¸ªç©å®¶æ•°é‡çš„ç‰Œæ•°ï¼Œè¿™é‡Œä¸é™åˆ¶ç©å®¶çš„æ•°é‡ï¼Œä¸è€ƒè™‘ä¸åŒçš„ç©å®¶å‡ºç°å®Œå…¨åŒæ ·çš„ç‰Œ
  * 
  * @author Leon
  *
@@ -19,7 +19,7 @@ public class PlayerGenerator {
 			Player player = new Player();
 			for (int j = 0; j < 3; j++) {
 				Card card = new Card();
-				// ÒÔÏÂ·ÀÖ¹Í¬Ò»¸±ÅÆÖĞ³öÏÖ»¨É«ºÍ´óĞ¡¶¼ÏàÍ¬µÄÅÆ
+				// ä»¥ä¸‹é˜²æ­¢åŒä¸€å‰¯ç‰Œä¸­å‡ºç°èŠ±è‰²å’Œå¤§å°éƒ½ç›¸åŒçš„ç‰Œ
 				int cardFlower = getRandomFlower(random);
 				int cardNumber = getRandomNumber(random);
 				if (j == 0) {

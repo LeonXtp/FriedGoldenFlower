@@ -1,17 +1,17 @@
 package com.leon.fgf;
 
 /**
- * µ•’≈≈∆
+ * ÂçïÂº†Áâå
  * 
  * @author Leon
  *
  */
 public class Card {
 
-	public static final int FLOWER_SPADE = 3;//∫⁄Ã“
-	public static final int FLOWER_HEART = 2;//∫ÏÃ“
-	public static final int FLOWER_CLUB = 1;//√∑ª®
-	public static final int FLOWER_DIAMOND = 0;//∑Ω∆¨
+	public static final int FLOWER_SPADE = 3;//ÈªëÊ°É
+	public static final int FLOWER_HEART = 2;//Á∫¢Ê°É
+	public static final int FLOWER_CLUB = 1;//Ê¢ÖËä±
+	public static final int FLOWER_DIAMOND = 0;//ÊñπÁâá
 
 	public static final int NUM_A = 14;
 	public static final int NUM_K = 13;
