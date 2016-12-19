@@ -36,6 +36,9 @@ public class LimitedPlayerProvider implements PlayerProvider {
 
 	@Override
 	public Player getSinglePlayer() {
+		if (cards.size() < 3) {// 牌不够发了，请洗牌！
+			return null;
+		}
 		Player player = new Player();
 		for (int i = 0; i < 3; i++) {
 			// 随机从一副有序的牌中抽取一张牌
@@ -47,8 +50,10 @@ public class LimitedPlayerProvider implements PlayerProvider {
 
 	@Override
 	public List<Player> getPlayers(int number) {
-		if (number > 17) {
-			throw new IllegalArgumentException("玩家人数最大不能超过17!");
+		if (cards.size() == 52 && number > 17) {
+			throw new IllegalArgumentException("这么多人玩？牌都不够发!");
+		} else if (number * 3 > cards.size()) {
+			return null;
 		}
 		List<Player> players = new ArrayList<>();
 		for (int i = 0; i < number; i++) {
@@ -78,6 +83,6 @@ public class LimitedPlayerProvider implements PlayerProvider {
 
 	@Override
 	public Card getCard() {
-		return cards.remove(random.nextInt(cards.size()));
+		return cards.size() > 0 ? cards.remove(random.nextInt(cards.size())) : null;
 	}
 }
