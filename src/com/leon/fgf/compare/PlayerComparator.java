@@ -1,8 +1,10 @@
-package com.leon.fgf;
+package com.leon.fgf.compare;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+import com.leon.fgf.entity.Player;
 
 /**
  * 牌型判断比较器，负责对所有玩家的牌大小进行计算和排序
@@ -10,15 +12,20 @@ import java.util.List;
  * @author Leon
  *
  */
-public class PlayerJuger implements Comparator<Player> {
+public class PlayerComparator implements Comparator<Player> {
 
 	private ValueCalculator calculator = new ValueCalculator();
 
-	public void judgePlayer(Player player) {
+	public void setupPlayer(Player player) {
 		calculator.setupPlayer(player);
 	}
 
-	public void sort(List<Player> playersInput) {
+	/**
+	 * 对玩家列表进行牌型判断、值获取及排序
+	 * 
+	 * @param playersInput
+	 */
+	public void sortPlayers(List<Player> playersInput) {
 		for (Player player : playersInput) {
 			calculator.setupPlayer(player);
 		}

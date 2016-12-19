@@ -1,4 +1,4 @@
-package com.leon.fgf;
+package com.leon.fgf.entity;
 
 /**
  * 单张牌
@@ -8,10 +8,10 @@ package com.leon.fgf;
  */
 public class Card {
 
-	public static final int FLOWER_SPADE = 3;//黑桃
-	public static final int FLOWER_HEART = 2;//红桃
-	public static final int FLOWER_CLUB = 1;//梅花
-	public static final int FLOWER_DIAMOND = 0;//方片
+	public static final int FLOWER_SPADE = 3;// 黑桃
+	public static final int FLOWER_HEART = 2;// 红桃
+	public static final int FLOWER_CLUB = 1;// 梅花
+	public static final int FLOWER_DIAMOND = 0;// 方片
 
 	public static final int NUM_A = 14;
 	public static final int NUM_K = 13;
@@ -27,10 +27,12 @@ public class Card {
 	public static final int NUM_3 = 3;
 	public static final int NUM_2 = 2;
 
+	// 单张牌大小
 	private int number;
+	// 花色
 	private int flower;
-	
-	public Card(){ }
+
+	public Card() { }
 
 	public Card(int flower, int number) {
 		this.flower = flower;

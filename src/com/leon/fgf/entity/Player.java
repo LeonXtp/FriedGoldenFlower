@@ -1,7 +1,7 @@
-package com.leon.fgf;
+package com.leon.fgf.entity;
 
 /**
- * 玩家
+ * 玩家，对应一副牌
  * 
  * @author Leon
  *
@@ -9,14 +9,15 @@ package com.leon.fgf;
 public class Player {
 
 	public Card[] cards = new Card[3];
-
+	// 牌类型
 	private int type;
-
+	// 是否为特殊牌
 	private boolean isSpecial = false;
-
+	// 牌绝对值大小
 	private int value;
 
-	public Player() { }
+	public Player() {
+	}
 
 	public Player(Card card0, Card card1, Card card2) {
 		this.cards[0] = card0;
