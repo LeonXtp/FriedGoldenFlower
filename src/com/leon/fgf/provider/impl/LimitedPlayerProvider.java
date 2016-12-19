@@ -23,7 +23,9 @@ public class LimitedPlayerProvider implements PlayerProvider {
 		this.initCards();
 	}
 
-	private void initCards() {// 产生一副新的牌
+	// 产生一副新的牌
+	private void initCards() {
+		cards.clear();
 		for (int i = 14; i > 1; i--) {
 			for (int j = 3; j >= 0; j--) {
 				Card card = new Card(j, i);
@@ -58,7 +60,6 @@ public class LimitedPlayerProvider implements PlayerProvider {
 
 	@Override
 	public void shuffle() {
-		cards.clear();
 		this.initCards();
 	}
 
