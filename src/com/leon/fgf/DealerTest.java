@@ -24,11 +24,9 @@ public class DealerTest {
 	// 发出10000副牌耗时10毫秒，计算牌大小并排序耗时19毫秒
 	// 发出100000副牌耗时39毫秒，计算牌大小并排序耗时85毫秒
 	// 其他需要请自行测试
-	private static final int PlayerNumber = 1024;
+	private static final int PlayerNumber = 2048;
 
 	public static void main(String args[]) {
-		System.out.print(Integer.MAX_VALUE);
-		System.out.println("\n===============================================");
 		testSinglePlayer();
 		System.out.println("\n===============================================");
 		testLimitedPlayer();
@@ -65,7 +63,7 @@ public class DealerTest {
 		PlayerProvider generator = new UnlimitedPlayerProvider();
 		//使用花色不参与大小比较的计算器
 		PlayerComparator juger = new PlayerComparator(new NonFlowerValueCalculator());
-		System.out.println("|n开始发牌..." + System.currentTimeMillis());
+		System.out.println("\n开始发牌..." + System.currentTimeMillis());
 		List<Player> players = generator.getPlayers(PlayerNumber);
 		System.out.println("发牌完成，开始排序..." + System.currentTimeMillis());
 		juger.sortPlayers(players);
