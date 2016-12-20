@@ -2,8 +2,9 @@ package com.leon.fgf;
 
 import java.util.List;
 
+import com.leon.fgf.calculator.impl.FlowerValueCalculator;
+import com.leon.fgf.calculator.impl.NonFlowerValueCalculator;
 import com.leon.fgf.compare.PlayerComparator;
-import com.leon.fgf.compare.PlayerType;
 import com.leon.fgf.entity.Card;
 import com.leon.fgf.entity.Player;
 import com.leon.fgf.provider.PlayerProvider;
@@ -26,6 +27,8 @@ public class DealerTest {
 	private static final int PlayerNumber = 1024;
 
 	public static void main(String args[]) {
+		System.out.print(Integer.MAX_VALUE);
+		System.out.println("\n===============================================");
 		testSinglePlayer();
 		System.out.println("\n===============================================");
 		testLimitedPlayer();
@@ -35,8 +38,10 @@ public class DealerTest {
 
 	// 测试从一副牌中发产生一个玩家
 	private static void testSinglePlayer() {
+		//使用有人数限制的发牌器
 		PlayerProvider playerProvider = new LimitedPlayerProvider();
-		PlayerComparator juger = new PlayerComparator();
+		//使用花色参与大小比较的计算器
+		PlayerComparator juger = new PlayerComparator(new FlowerValueCalculator());
 		Player player = playerProvider.getSinglePlayer();
 		juger.setupPlayer(player);
 		printPlayerCards(player);
@@ -45,8 +50,10 @@ public class DealerTest {
 
 	// 测试从一副牌中产生多个玩家，一般玩家数量2-6个
 	private static void testLimitedPlayer() {
+		//使用有人数限制的发牌器
 		PlayerProvider playerProvider = new LimitedPlayerProvider();
-		PlayerComparator juger = new PlayerComparator();
+		//使用花色参与大小比较的计算器
+		PlayerComparator juger = new PlayerComparator(new FlowerValueCalculator());
 		List<Player> players = playerProvider.getPlayers(16);
 		juger.sortPlayers(players);
 		printPlayers(players);
@@ -54,8 +61,10 @@ public class DealerTest {
 
 	// 测试随机产生不限制数量的玩家，不考虑多个玩家出现完全相同牌型的情况，但一个玩家不会出现完全相同的两张牌
 	private static void testManyPlayers() {
+		//使用没有人数限制的发牌器
 		PlayerProvider generator = new UnlimitedPlayerProvider();
-		PlayerComparator juger = new PlayerComparator();
+		//使用花色不参与大小比较的计算器
+		PlayerComparator juger = new PlayerComparator(new NonFlowerValueCalculator());
 		System.out.println("|n开始发牌..." + System.currentTimeMillis());
 		List<Player> players = generator.getPlayers(PlayerNumber);
 		System.out.println("发牌完成，开始排序..." + System.currentTimeMillis());

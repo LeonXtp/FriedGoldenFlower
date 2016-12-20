@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.leon.fgf.calculator.ValueCalculator;
 import com.leon.fgf.entity.Player;
 
 /**
@@ -14,10 +15,14 @@ import com.leon.fgf.entity.Player;
  */
 public class PlayerComparator implements Comparator<Player> {
 
-	private ValueCalculator calculator = new ValueCalculator();
+	private TypeValueSetter recognizer;
+
+	public PlayerComparator(ValueCalculator calculator) {
+		this.recognizer = new TypeValueSetter(calculator);
+	}
 
 	public void setupPlayer(Player player) {
-		calculator.setupPlayer(player);
+		recognizer.regPlayerType(player);
 	}
 
 	/**
@@ -27,7 +32,7 @@ public class PlayerComparator implements Comparator<Player> {
 	 */
 	public void sortPlayers(List<Player> playersInput) {
 		for (Player player : playersInput) {
-			calculator.setupPlayer(player);
+			recognizer.regPlayerType(player);
 		}
 		Collections.sort(playersInput, this);
 		Collections.reverse(playersInput);
