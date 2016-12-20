@@ -7,6 +7,7 @@ import java.util.Random;
 import com.leon.fgf.entity.Card;
 import com.leon.fgf.entity.Player;
 import com.leon.fgf.provider.PlayerProvider;
+import com.leon.fgf.util.PlayerUtil;
 
 /**
  * 无限制的发牌器，将产生指定个玩家数量的牌数，这里不限制玩家的数量，不考虑不同的玩家出现完全同样的牌
@@ -47,7 +48,7 @@ public class UnlimitedPlayerProvider implements PlayerProvider {
 			}
 			player.cards[j] = card;
 		}
-		sort(player);
+		PlayerUtil.sortPlayer(player);
 		return player;
 	}
 
@@ -66,19 +67,6 @@ public class UnlimitedPlayerProvider implements PlayerProvider {
 
 	private int getRandomNumber(Random random) {
 		return 2 + random.nextInt(13);
-	}
-
-	// 将一副牌按牌面从大到小排序
-	private void sort(Player player) {
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3 - i - 1; j++) {
-				if (player.cards[j].getNumber() < player.cards[j + 1].getNumber()) {
-					Card tempCard = player.cards[j];
-					player.cards[j] = player.cards[j + 1];
-					player.cards[j + 1] = tempCard;
-				}
-			}
-		}
 	}
 
 	//无限制模式下，发单张牌是如此的肆无忌惮

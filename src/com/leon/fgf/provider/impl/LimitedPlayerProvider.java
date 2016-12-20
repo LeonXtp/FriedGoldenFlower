@@ -7,6 +7,7 @@ import java.util.Random;
 import com.leon.fgf.entity.Card;
 import com.leon.fgf.entity.Player;
 import com.leon.fgf.provider.PlayerProvider;
+import com.leon.fgf.util.PlayerUtil;
 
 /**
  * 有限制的发牌器，只有一副牌，玩家数量有限
@@ -44,7 +45,7 @@ public class LimitedPlayerProvider implements PlayerProvider {
 			// 随机从一副有序的牌中抽取一张牌
 			player.cards[i] = getCard();
 		}
-		sort(player);
+		PlayerUtil.sortPlayer(player);
 		return player;
 	}
 
@@ -66,19 +67,6 @@ public class LimitedPlayerProvider implements PlayerProvider {
 	@Override
 	public void shuffle() {
 		this.initCards();
-	}
-
-	// 将一副牌按牌面从大到小排序
-	private void sort(Player player) {
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3 - i - 1; j++) {
-				if (player.cards[j].getNumber() < player.cards[j + 1].getNumber()) {
-					Card tempCard = player.cards[j];
-					player.cards[j] = player.cards[j + 1];
-					player.cards[j + 1] = tempCard;
-				}
-			}
-		}
 	}
 
 	@Override

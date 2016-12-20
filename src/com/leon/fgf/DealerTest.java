@@ -3,6 +3,7 @@ package com.leon.fgf;
 import java.util.List;
 
 import com.leon.fgf.calculator.PlayerType;
+import com.leon.fgf.calculator.impl.FlowerLow2HeighCalculator;
 import com.leon.fgf.calculator.impl.FlowerValueCalculator;
 import com.leon.fgf.calculator.impl.Low2HeighCalculator;
 import com.leon.fgf.calculator.impl.NonFlowerValueCalculator;
@@ -38,37 +39,37 @@ public class DealerTest {
 
 	// 测试从一副牌中发产生一个玩家
 	private static void testSinglePlayer() {
-		//使用有人数限制的发牌器
+		// 使用有人数限制的发牌器
 		PlayerProvider playerProvider = new LimitedPlayerProvider();
-		//使用花色参与大小比较的计算器
+		// 使用花色参与大小比较的计算器
 		PlayerComparator juger = new PlayerComparator(new FlowerValueCalculator());
 		Player player = playerProvider.getSinglePlayer();
-		juger.setupPlayer(player);
+		juger.setupSortedPlayer(player);
 		printPlayerCards(player);
 		printTypeValue(player);
 	}
 
 	// 测试从一副牌中产生多个玩家，一般玩家数量2-6个
 	private static void testLimitedPlayer() {
-		//使用有人数限制的发牌器
+		// 使用有人数限制的发牌器
 		PlayerProvider playerProvider = new LimitedPlayerProvider();
-		//使用花色参与大小比较的计算器
+		// 使用花色参与大小比较的计算器
 		PlayerComparator juger = new PlayerComparator(new FlowerValueCalculator());
 		List<Player> players = playerProvider.getPlayers(16);
-		juger.sortPlayers(players);
+		juger.sortRegularPlayers(players);
 		printPlayers(players);
 	}
 
 	// 测试随机产生不限制数量的玩家，不考虑多个玩家出现完全相同牌型的情况，但一个玩家不会出现完全相同的两张牌
 	private static void testManyPlayers() {
-		//使用没有人数限制的发牌器
+		// 使用没有人数限制的发牌器
 		PlayerProvider generator = new UnlimitedPlayerProvider();
-		//使用花色不参与大小比较的计算器，并且按照牌的值越大，牌越小的计算器
-		PlayerComparator juger = new PlayerComparator(new Low2HeighCalculator());
+		// 使用花色不参与大小比较的计算器，并且按照牌的值越大，牌越小的计算器，花色也参与计算牌大小
+		PlayerComparator juger = new PlayerComparator(new FlowerLow2HeighCalculator());
 		System.out.println("\n开始发牌..." + System.currentTimeMillis());
 		List<Player> players = generator.getPlayers(PlayerNumber);
 		System.out.println("发牌完成，开始排序..." + System.currentTimeMillis());
-		juger.sortPlayers(players);
+		juger.sortRegularPlayers(players);
 		System.out.println("排序完成..." + System.currentTimeMillis());
 
 		printPlayers(players);

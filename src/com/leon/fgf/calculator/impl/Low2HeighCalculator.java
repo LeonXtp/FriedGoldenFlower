@@ -5,6 +5,7 @@ import com.leon.fgf.calculator.ValueCalculator;
 import com.leon.fgf.entity.Player;
 
 /**
+ * 牌值越大，牌越小的计算器，花色不参与牌大小比较 
  * 有人抽风，硬要进行牌大小比较时，牌值大的反而小
  * 
  * @author Leon
