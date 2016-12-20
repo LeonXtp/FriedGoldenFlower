@@ -48,7 +48,7 @@ public class UnlimitedPlayerProvider implements PlayerProvider {
 			}
 			player.cards[j] = card;
 		}
-		PlayerUtil.sortPlayer(player);
+		PlayerUtil.sortPlayerByNumber(player);
 		return player;
 	}
 

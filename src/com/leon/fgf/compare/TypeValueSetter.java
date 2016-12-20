@@ -2,8 +2,8 @@ package com.leon.fgf.compare;
 
 import com.leon.fgf.calculator.PlayerType;
 import com.leon.fgf.calculator.ValueCalculator;
-import com.leon.fgf.entity.Card;
 import com.leon.fgf.entity.Player;
+import com.leon.fgf.util.PlayerUtil;
 
 /**
  * 牌型识别器，负责鉴定牌型，并按照指定的模式计算牌大小
@@ -39,11 +39,7 @@ public class TypeValueSetter {
 			} else {
 				player.setType(PlayerType.DOUBLE);
 				// 将对子放到玩家牌的前两张的位置,以便于之后的牌值计算
-				if (player.cards[1].getNumber() == player.cards[2].getNumber()) {
-					Card tempCard = player.cards[0];
-					player.cards[0] = player.cards[2];
-					player.cards[2] = tempCard;
-				}
+				PlayerUtil.moveDouble2Front(player);
 				player.setValue(calculator.getDoubleValue(player));
 			}
 		} else {// 普通牌

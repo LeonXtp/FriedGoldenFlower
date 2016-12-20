@@ -3,6 +3,7 @@ package com.leon.fgf.calculator.impl;
 import com.leon.fgf.calculator.PlayerTypeLow2Heigh;
 import com.leon.fgf.calculator.ValueCalculator;
 import com.leon.fgf.entity.Player;
+import com.leon.fgf.util.PlayerUtil;
 
 /**
  * 牌值越大，牌越小的计算器，并且花色参与牌大小比较
@@ -19,6 +20,7 @@ public class FlowerLow2HeighCalculator implements ValueCalculator {
 
 	// 获取炸弹牌值绝对大小
 	public int getBombValue(Player player) {
+		PlayerUtil.sortPlayerByFlower(player);
 		return (14 - player.cards[0].getNumber()) * 64 + getFlowerValue(player);
 	}
 
@@ -42,6 +44,8 @@ public class FlowerLow2HeighCalculator implements ValueCalculator {
 	// 获取对子牌值绝对大小
 	// 在判断牌型时，如果是对子，则将对子放在数组前面两位
 	public int getDoubleValue(Player player) {
+		//在花色参与计算大小时，将对子中的花色大的换到前面
+		PlayerUtil.exchangeSortedDoubleFlower(player);
 		return ((14 - player.cards[1].getNumber()) * 16 + (14 - player.cards[2].getNumber())
 				+ PlayerTypeLow2Heigh.STRAIGHT_MAX_VALUE) * 64 + getFlowerValue(player);
 	}

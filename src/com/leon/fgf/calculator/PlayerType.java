@@ -1,7 +1,7 @@
 package com.leon.fgf.calculator;
 
 /**
- * 对牌型分类，并提供牌大小值的算法，和已经计算好的牌型最大值
+ * 对牌型分类，并提供牌大小值的算法，和已经计算好的牌型最大值 
  * 
  * @author Leon
  *

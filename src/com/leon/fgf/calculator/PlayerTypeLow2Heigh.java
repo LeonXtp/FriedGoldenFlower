@@ -2,7 +2,7 @@ package com.leon.fgf.calculator;
 
 /**
  * 对牌型分类，并提供牌大小值的算法，和已经计算好的牌型最大值
- * 
+ * 有人抽风， 硬要进行牌大小比较时，牌值大的反而小
  * @author Leon
  *
  */

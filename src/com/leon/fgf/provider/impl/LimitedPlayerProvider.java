@@ -45,7 +45,7 @@ public class LimitedPlayerProvider implements PlayerProvider {
 			// 随机从一副有序的牌中抽取一张牌
 			player.cards[i] = getCard();
 		}
-		PlayerUtil.sortPlayer(player);
+		PlayerUtil.sortPlayerByNumber(player);
 		return player;
 	}
 

@@ -27,9 +27,11 @@ public class DealerTest {
 	// 发出10000副牌耗时10毫秒，计算牌大小并排序耗时19毫秒
 	// 发出100000副牌耗时39毫秒，计算牌大小并排序耗时85毫秒
 	// 其他需要请自行测试
-	private static final int PlayerNumber = 2048;
+	private static final int PlayerNumber = 1024;
 
 	public static void main(String args[]) {
+		testManualInputPlayer();
+		System.out.println("\n===============================================");
 		testSinglePlayer();
 		System.out.println("\n===============================================");
 		testLimitedPlayer();
@@ -37,13 +39,26 @@ public class DealerTest {
 		testManyPlayers();
 	}
 
-	// 测试从一副牌中发产生一个玩家
+	// 测试手动产生一副牌
+	public static void testManualInputPlayer() {
+		// 使用花色参与大小比较的计算器，并且牌值越大，牌越小
+		PlayerComparator comparator = new PlayerComparator(new FlowerLow2HeighCalculator());
+		Player player = new Player(new Card(Card.FLOWER_SPADE, 2), new Card(Card.FLOWER_HEART, 4),
+				new Card(Card.FLOWER_DIAMOND, 3));
+		// 对于一副未按大小排好序的牌，调用setupUnsortedPlayer()方法
+		comparator.setupUnsortedPlayer(player);
+		printPlayerCards(player);
+		printTypeValue(player);
+	}
+
+	// 测试从一副牌中产生一个玩家
 	private static void testSinglePlayer() {
 		// 使用有人数限制的发牌器
 		PlayerProvider playerProvider = new LimitedPlayerProvider();
 		// 使用花色参与大小比较的计算器
 		PlayerComparator juger = new PlayerComparator(new FlowerValueCalculator());
 		Player player = playerProvider.getSinglePlayer();
+		// 使用发牌器发出的牌，每副牌已经自动按大到小排好序，调用setupSortedPlayer()方法
 		juger.setupSortedPlayer(player);
 		printPlayerCards(player);
 		printTypeValue(player);
@@ -56,6 +71,7 @@ public class DealerTest {
 		// 使用花色参与大小比较的计算器
 		PlayerComparator juger = new PlayerComparator(new FlowerValueCalculator());
 		List<Player> players = playerProvider.getPlayers(16);
+		// 使用发牌器发出的牌，每副牌已经自动按大到小排好序，调用sortRegularPlayers()方法
 		juger.sortRegularPlayers(players);
 		printPlayers(players);
 	}

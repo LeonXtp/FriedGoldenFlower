@@ -27,7 +27,7 @@ public class PlayerComparator implements Comparator<Player> {
 	 * @param player 三张牌没有按牌面大小从大到小排好序的Player
 	 */
 	public void setupUnsortedPlayer(Player player) {
-		PlayerUtil.sortPlayer(player);
+		PlayerUtil.sortPlayerByNumber(player);
 		recognizer.regPlayerType(player);
 	}
 
@@ -59,7 +59,7 @@ public class PlayerComparator implements Comparator<Player> {
 	 */
 	public void sortUnRegularPlayers(List<Player> playersInput) {
 		for (Player player : playersInput) {
-			PlayerUtil.sortPlayer(player);
+			PlayerUtil.sortPlayerByNumber(player);
 			recognizer.regPlayerType(player);
 		}
 		Collections.sort(playersInput, this);
