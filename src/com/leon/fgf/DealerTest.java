@@ -2,7 +2,9 @@ package com.leon.fgf;
 
 import java.util.List;
 
+import com.leon.fgf.calculator.PlayerType;
 import com.leon.fgf.calculator.impl.FlowerValueCalculator;
+import com.leon.fgf.calculator.impl.Low2HeighCalculator;
 import com.leon.fgf.calculator.impl.NonFlowerValueCalculator;
 import com.leon.fgf.compare.PlayerComparator;
 import com.leon.fgf.entity.Card;
@@ -61,8 +63,8 @@ public class DealerTest {
 	private static void testManyPlayers() {
 		//使用没有人数限制的发牌器
 		PlayerProvider generator = new UnlimitedPlayerProvider();
-		//使用花色不参与大小比较的计算器
-		PlayerComparator juger = new PlayerComparator(new NonFlowerValueCalculator());
+		//使用花色不参与大小比较的计算器，并且按照牌的值越大，牌越小的计算器
+		PlayerComparator juger = new PlayerComparator(new Low2HeighCalculator());
 		System.out.println("\n开始发牌..." + System.currentTimeMillis());
 		List<Player> players = generator.getPlayers(PlayerNumber);
 		System.out.println("发牌完成，开始排序..." + System.currentTimeMillis());

@@ -1,6 +1,6 @@
 package com.leon.fgf.compare;
 
-import com.leon.fgf.PlayerType;
+import com.leon.fgf.calculator.PlayerType;
 import com.leon.fgf.calculator.ValueCalculator;
 import com.leon.fgf.entity.Card;
 import com.leon.fgf.entity.Player;
