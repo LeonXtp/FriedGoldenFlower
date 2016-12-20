@@ -80,7 +80,7 @@ public class DealerTest {
 	private static void testManyPlayers() {
 		// 使用没有人数限制的发牌器
 		PlayerProvider generator = new UnlimitedPlayerProvider();
-		// 使用花色不参与大小比较的计算器，并且按照牌的值越大，牌越小的计算器，花色也参与计算牌大小
+		// 使用花色参与大小比较的计算器，并且按照牌的值越大，牌越小
 		PlayerComparator juger = new PlayerComparator(new FlowerLow2HeighCalculator());
 		System.out.println("\n开始发牌..." + System.currentTimeMillis());
 		List<Player> players = generator.getPlayers(PlayerNumber);
