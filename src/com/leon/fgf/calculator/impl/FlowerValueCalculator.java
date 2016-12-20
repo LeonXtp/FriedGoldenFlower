@@ -5,6 +5,11 @@ import com.leon.fgf.calculator.ValueCalculator;
 import com.leon.fgf.entity.Player;
 import com.leon.fgf.util.PlayerUtil;
 
+/**
+ * 花色参与牌值大小比较的计算器，牌值越大，牌越大
+ * @author Leon
+ *
+ */
 public class FlowerValueCalculator implements ValueCalculator {
 
 	private int getFlowerValue(Player player) {

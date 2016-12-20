@@ -5,8 +5,8 @@ import com.leon.fgf.calculator.ValueCalculator;
 import com.leon.fgf.entity.Player;
 
 /**
- * 花色不参与牌大小比较的牌大小计算器
- * 
+ * 花色不参与牌大小比较的计算器
+ * 牌值越大，牌越大
  * @author Leon
  *
  */

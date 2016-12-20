@@ -31,6 +31,7 @@ public class PlayerUtil {
 		}
 	}
 
+	// 将对子移动到一幅牌的前两位
 	public static void moveDouble2Front(Player player) {
 		if (player.cards[1].getNumber() == player.cards[2].getNumber()) {
 			Card tempCard = player.cards[0];
@@ -39,6 +40,7 @@ public class PlayerUtil {
 		}
 	}
 
+	// 将对子已经处于一副牌的前两张的牌，移动对子中花色大的到最前面
 	public static void exchangeSortedDoubleFlower(Player player) {
 		if (player.cards[0].getFlower() < player.cards[1].getFlower()) {
 			Card tempCard = player.cards[0];
