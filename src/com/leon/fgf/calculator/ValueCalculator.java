@@ -2,6 +2,12 @@ package com.leon.fgf.calculator;
 
 import com.leon.fgf.entity.Player;
 
+/**
+ * 牌值计算器
+ * 
+ * @author Leon
+ *
+ */
 public interface ValueCalculator {
 	// 获取炸弹牌值绝对大小
 	int getBombValue(Player player);

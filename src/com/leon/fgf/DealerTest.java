@@ -46,7 +46,7 @@ public class DealerTest {
 		Player player = new Player(new Card(Card.FLOWER_SPADE, 2), new Card(Card.FLOWER_HEART, 4),
 				new Card(Card.FLOWER_DIAMOND, 3));
 		// 对于一副未按大小排好序的牌，调用setupUnsortedPlayer()方法
-		comparator.setupUnsortedPlayer(player);
+		comparator.setupPlayer(player, false);
 		printPlayerCards(player);
 		printTypeValue(player);
 	}
@@ -59,7 +59,7 @@ public class DealerTest {
 		PlayerComparator juger = new PlayerComparator(new FlowerValueCalculator());
 		Player player = playerProvider.getSinglePlayer();
 		// 使用发牌器发出的牌，每副牌已经自动按大到小排好序，调用setupSortedPlayer()方法
-		juger.setupSortedPlayer(player);
+		juger.setupPlayer(player, true);
 		printPlayerCards(player);
 		printTypeValue(player);
 	}
@@ -72,7 +72,7 @@ public class DealerTest {
 		PlayerComparator juger = new PlayerComparator(new FlowerValueCalculator());
 		List<Player> players = playerProvider.getPlayers(16);
 		// 使用发牌器发出的牌，每副牌已经自动按大到小排好序，调用sortRegularPlayers()方法
-		juger.sortRegularPlayers(players);
+		juger.sortPlayers(players, true);
 		printPlayers(players);
 	}
 
@@ -85,7 +85,7 @@ public class DealerTest {
 		System.out.println("\n开始发牌..." + System.currentTimeMillis());
 		List<Player> players = generator.getPlayers(PlayerNumber);
 		System.out.println("发牌完成，开始排序..." + System.currentTimeMillis());
-		juger.sortRegularPlayers(players);
+		juger.sortPlayers(players, true);
 		System.out.println("排序完成..." + System.currentTimeMillis());
 
 		printPlayers(players);
