@@ -12,13 +12,13 @@ public interface ValueCalculator {
 	// 获取炸弹牌值绝对大小
 	int getBombValue(Player player);
 
-	// 获取同花顺牌值绝对大小
+	// 获取同花顺牌值绝对大小,A32也是同花顺，是最小的同花顺(参考自百度百科)
 	int getStraightFlushValue(Player player);
 
 	// 获取同花牌值绝对大小
 	int getFlushValue(Player player);
 
-	// 获取顺子牌值绝对大小
+	// 获取顺子牌值绝对大小，A32也是顺子，是最小的同花顺(参考自百度百科)
 	int getStraightValue(Player player);
 
 	// 获取对子牌值绝对大小

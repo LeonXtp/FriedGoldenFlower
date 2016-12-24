@@ -7,6 +7,7 @@ import com.leon.fgf.util.PlayerUtil;
 
 /**
  * 花色参与牌值大小比较的计算器，牌值越大，牌越大
+ * 
  * @author Leon
  *
  */
@@ -14,6 +15,10 @@ public class FlowerValueCalculator implements ValueCalculator {
 
 	private int getFlowerValue(Player player) {
 		return player.cards[0].getFlower() * 16 + player.cards[1].getFlower() * 4 + player.cards[2].getFlower();
+	}
+	
+	private int getA32FlowerValue(Player player){
+		return player.cards[1].getFlower() * 16 + player.cards[2].getFlower() * 4 + player.cards[0].getFlower();
 	}
 
 	// 获取炸弹牌值绝对大小
@@ -23,8 +28,11 @@ public class FlowerValueCalculator implements ValueCalculator {
 		return (player.cards[0].getNumber() + PlayerType.STRAIGHT_FLUSH_MAX_VALUE) * 64 + getFlowerValue(player);
 	}
 
-	// 获取同花顺牌值绝对大小
+	// 获取同花顺牌值绝对大小,A32也是同花顺，是最小的同花顺(参考自百度百科)
 	public int getStraightFlushValue(Player player) {
+		if (player.isA32()) {
+			return (1 + PlayerType.FLUSH_MAX_VALUE) * 64 + getA32FlowerValue(player);
+		}
 		return (player.cards[2].getNumber() + PlayerType.FLUSH_MAX_VALUE) * 64 + getFlowerValue(player);
 	}
 
@@ -36,6 +44,9 @@ public class FlowerValueCalculator implements ValueCalculator {
 
 	// 获取顺子牌值绝对大小
 	public int getStraightValue(Player player) {
+		if (player.isA32()) {
+			return (1 + PlayerType.DOUBLE_MAX_VALUE) * 64 + getA32FlowerValue(player);
+		}
 		return (player.cards[2].getNumber() + PlayerType.DOUBLE_MAX_VALUE) * 64 + getFlowerValue(player);
 	}
 

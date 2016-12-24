@@ -23,10 +23,7 @@ import com.leon.fgf.provider.impl.UnlimitedPlayerProvider;
 public class DealerTest {
 
 	// 测试结果：
-	// 发出1000副牌耗时3毫秒，计算牌大小并排序耗时5毫秒
-	// 发出10000副牌耗时10毫秒，计算牌大小并排序耗时19毫秒
-	// 发出100000副牌耗时39毫秒，计算牌大小并排序耗时85毫秒
-	// 其他需要请自行测试
+	// 发出1000副牌耗时1-15毫秒，计算牌大小并排序耗时1-15毫秒
 	private static final int PlayerNumber = 1024;
 
 	public static void main(String args[]) {
@@ -43,10 +40,10 @@ public class DealerTest {
 	public static void testManualInputPlayer() {
 		// 使用花色参与大小比较的计算器，并且牌值越大，牌越小
 		PlayerComparator comparator = new PlayerComparator(new FlowerLow2HeighCalculator());
-		Player player = new Player(new Card(Card.FLOWER_SPADE, 2), new Card(Card.FLOWER_HEART, 4),
-				new Card(Card.FLOWER_DIAMOND, 3));
-		// 对于一副未按大小排好序的牌，调用setupUnsortedPlayer()方法
-		comparator.setupPlayer(player, false);
+		Player player = new Player(new Card(Card.FLOWER_SPADE, 2), new Card(Card.FLOWER_HEART, 3),
+				new Card(Card.FLOWER_DIAMOND, 14));
+		// 对于一副未按大小排好序的牌，调用setupUnRegularPlayer()方法
+		comparator.setupUnRegularPlayer(player);
 		printPlayerCards(player);
 		printTypeValue(player);
 	}
@@ -58,8 +55,8 @@ public class DealerTest {
 		// 使用花色参与大小比较的计算器
 		PlayerComparator juger = new PlayerComparator(new FlowerValueCalculator());
 		Player player = playerProvider.getSinglePlayer();
-		// 使用发牌器发出的牌，每副牌已经自动按大到小排好序，调用setupSortedPlayer()方法
-		juger.setupPlayer(player, true);
+		// 使用发牌器发出的牌，每副牌已经自动按大到小排好序，调用setupRegularPlayer()方法
+		juger.setupRegularPlayer(player);
 		printPlayerCards(player);
 		printTypeValue(player);
 	}
@@ -72,7 +69,7 @@ public class DealerTest {
 		PlayerComparator juger = new PlayerComparator(new FlowerValueCalculator());
 		List<Player> players = playerProvider.getPlayers(16);
 		// 使用发牌器发出的牌，每副牌已经自动按大到小排好序，调用sortRegularPlayers()方法
-		juger.sortPlayers(players, true);
+		juger.sortRegularPlayers(players);
 		printPlayers(players);
 	}
 
@@ -81,13 +78,13 @@ public class DealerTest {
 		// 使用没有人数限制的发牌器
 		PlayerProvider generator = new UnlimitedPlayerProvider();
 		// 使用花色参与大小比较的计算器，并且按照牌的值越大，牌越小
-		PlayerComparator juger = new PlayerComparator(new FlowerLow2HeighCalculator());
+		PlayerComparator juger = new PlayerComparator(new FlowerValueCalculator());
 		System.out.println("\n开始发牌..." + System.currentTimeMillis());
 		List<Player> players = generator.getPlayers(PlayerNumber);
 		System.out.println("发牌完成，开始排序..." + System.currentTimeMillis());
-		juger.sortPlayers(players, true);
+		juger.sortRegularPlayers(players);
 		System.out.println("排序完成..." + System.currentTimeMillis());
-
+        
 		printPlayers(players);
 	}
 

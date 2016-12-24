@@ -5,8 +5,8 @@ import com.leon.fgf.calculator.ValueCalculator;
 import com.leon.fgf.entity.Player;
 
 /**
- * 花色不参与牌大小比较的计算器
- * 牌值越大，牌越大
+ * 花色不参与牌大小比较的计算器 牌值越大，牌越大
+ * 
  * @author Leon
  *
  */
@@ -17,8 +17,12 @@ public class NonFlowerValueCalculator implements ValueCalculator {
 		return player.cards[0].getNumber() + PlayerType.STRAIGHT_FLUSH_MAX_VALUE;
 	}
 
-	// 获取同花顺牌值绝对大小
+	// 获取同花顺牌值绝对大小,A32也是同花顺，是最小的同花顺(参考自百度百科)
 	public int getStraightFlushValue(Player player) {
+		if (player.isA32()) {
+			//此时A就等于是1
+			return 1 + PlayerType.FLUSH_MAX_VALUE;
+		}
 		return player.cards[2].getNumber() + PlayerType.FLUSH_MAX_VALUE;
 	}
 
@@ -30,6 +34,10 @@ public class NonFlowerValueCalculator implements ValueCalculator {
 
 	// 获取顺子牌值绝对大小
 	public int getStraightValue(Player player) {
+		if (player.isA32()) {
+			//此时A就等于是1
+			return 1 + PlayerType.DOUBLE_MAX_VALUE;
+		}
 		return player.cards[2].getNumber() + PlayerType.DOUBLE_MAX_VALUE;
 	}
 

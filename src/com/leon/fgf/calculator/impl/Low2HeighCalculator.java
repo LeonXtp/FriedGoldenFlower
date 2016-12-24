@@ -20,6 +20,10 @@ public class Low2HeighCalculator implements ValueCalculator {
 
 	// 获取同花顺牌值绝对大小
 	public int getStraightFlushValue(Player player) {
+		if (player.isA32()) {
+			//此时A就等于是1
+			return 13 + PlayerTypeLow2Heigh.BOMB_MAX_VALUE;
+		}
 		return 14 - player.cards[2].getNumber() + PlayerTypeLow2Heigh.BOMB_MAX_VALUE;
 	}
 
@@ -31,6 +35,10 @@ public class Low2HeighCalculator implements ValueCalculator {
 
 	// 获取顺子牌值绝对大小
 	public int getStraightValue(Player player) {
+		if (player.isA32()) {
+			//此时A就等于是1
+			return 13 + PlayerTypeLow2Heigh.FLUSH_MAX_VALUE;
+		}
 		return 14 - player.cards[2].getNumber() + PlayerTypeLow2Heigh.FLUSH_MAX_VALUE;
 	}
 

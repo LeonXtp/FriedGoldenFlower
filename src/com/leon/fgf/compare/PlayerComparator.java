@@ -23,38 +23,49 @@ public class PlayerComparator implements Comparator<Player> {
 	}
 
 	/**
-	 * 对玩家牌型进行牌型识别和牌值计算
+	 * 对玩家牌型进行牌型识别和牌值计算 这副牌三张都已经按照数字从大到小排好序
 	 * 
-	 * @param player
-	 *            一副牌
-	 * 
-	 * @param playerSorted
-	 *            这副牌是否三张都已经按照数字从大到小排好序
+	 * @param player  一副牌
 	 */
-	public void setupPlayer(Player player, boolean playerSorted) {
-		if (!playerSorted) {
-			PlayerUtil.sortPlayerByNumber(player);
-		}
+	public Player setupRegularPlayer(Player player) {
+		return recognizer.regPlayerType(player);
+	}
+
+	/**
+	 * 对玩家牌型进行牌型识别和牌值计算 这副牌没有按照数字从大到小排好序
+	 * 
+	 * @param player 一副牌
+	 */
+	public void setupUnRegularPlayer(Player player) {
+		PlayerUtil.sortPlayerByNumber(player);
 		recognizer.regPlayerType(player);
 	}
 
 	/**
-	 * 对玩家列表进行牌型判断、值获取及排序 每副牌的三张牌没有按照从大到小排序
+	 * 对玩家列表进行牌型判断、值获取及排序 
+	 * 每副牌的三张牌都已经按照数字从大到小排序
 	 * 
-	 * @param playersInput
-	 *            一组牌
-	 * @param playerSorted
-	 *            这组牌是否每副牌的三张都已经按照数字从大到小排好序
+	 * @param playersInput  一组牌
 	 */
-	public void sortPlayers(List<Player> playersInput, boolean playerSorted) {
+	public void sortRegularPlayers(List<Player> playersInput) {
 		for (Player player : playersInput) {
-			if (!playerSorted) {
-				PlayerUtil.sortPlayerByNumber(player);
-			}
 			recognizer.regPlayerType(player);
 		}
 		Collections.sort(playersInput, this);
-		Collections.reverse(playersInput);
+	}
+
+	/**
+	 * 对玩家列表进行牌型判断、值获取及排序 
+	 * 每副牌的三张牌没有按照从大到小排序
+	 * 
+	 * @param playersInput 一组牌
+	 */
+	public void sortUnRegularPlayers(List<Player> playersInput) {
+		for (Player player : playersInput) {
+			PlayerUtil.sortPlayerByNumber(player);
+			recognizer.regPlayerType(player);
+		}
+		Collections.sort(playersInput, this);
 	}
 
 	@Override

@@ -13,6 +13,7 @@ public class Player {
 	private int type;
 	// 是否为特殊牌
 	private boolean isSpecial = false;
+	private boolean isA32 = false;
 	// 牌绝对值大小
 	private int value;
 
@@ -55,6 +56,14 @@ public class Player {
 
 	public void setSpecial(boolean isSpecial) {
 		this.isSpecial = isSpecial;
+	}
+
+	public boolean isA32() {
+		return isA32;
+	}
+
+	public void setA32(boolean isA32) {
+		this.isA32 = isA32;
 	}
 
 }

@@ -11,19 +11,21 @@ public class PlayerTypeLow2Heigh {
 	// 最大值222=14
 	public static final int BOMB_MAX_VALUE = 14;
 
-	// 最大值432=12，加上炸弹14=26
-	public static final int STRAIGHT_FLUSH_MAX_VALUE = 26;
+	// A32也是顺子，是最小的同花顺(参考自百度百科)
+	// 最大值A32=13，加上炸弹14=27
+	public static final int STRAIGHT_FLUSH_MAX_VALUE = 27;
 
-	// 最大值532，14*16*16+13*16+11=3803，加上顺子26=3829
-	public static final int FLUSH_MAX_VALUE = 3829;
+	// 最大值532，14*16*16+13*16+11=3803，加上顺子27=3830
+	public static final int FLUSH_MAX_VALUE = 3830;
 
-	// 最大值432=12，加上对子的最大值基数3829=3841
-	public static final int STRAIGHT_MAX_VALUE = 3841;
+	// A32也是顺子，是最小的同花顺(参考自百度百科)
+	// 最大值A32=13，加上对子的最大值基数3830=3843
+	public static final int STRAIGHT_MAX_VALUE = 3843;
 
-	// 最大值223=14*16+13=237,加上普通牌的基数3841=4078
-	public static final int DOUBLE_MAX_VALUE = 4078;
+	// 最大值223=14*16+13=237,加上普通牌的基数3843=4080
+	public static final int DOUBLE_MAX_VALUE = 4080;
 
-	// 最大值532=14*16*16+13*16+11=3803，加上对子4078=7881
-	public static final int NORMAL_MAX_VALUE = 7881;
+	// 最大值532=14*16*16+13*16+11=3803，加上对子4080=7883
+	public static final int NORMAL_MAX_VALUE = 7883;
 
 }
