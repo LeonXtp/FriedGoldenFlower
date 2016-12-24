@@ -25,16 +25,18 @@ public class PlayerComparator implements Comparator<Player> {
 	/**
 	 * 对玩家牌型进行牌型识别和牌值计算 这副牌三张都已经按照数字从大到小排好序
 	 * 
-	 * @param player  一副牌
+	 * @param player
+	 *            一副牌
 	 */
-	public Player setupRegularPlayer(Player player) {
-		return recognizer.regPlayerType(player);
+	public void setupRegularPlayer(Player player) {
+		recognizer.regPlayerType(player);
 	}
 
 	/**
 	 * 对玩家牌型进行牌型识别和牌值计算 这副牌没有按照数字从大到小排好序
 	 * 
-	 * @param player 一副牌
+	 * @param player
+	 *            一副牌
 	 */
 	public void setupUnRegularPlayer(Player player) {
 		PlayerUtil.sortPlayerByNumber(player);
@@ -42,10 +44,10 @@ public class PlayerComparator implements Comparator<Player> {
 	}
 
 	/**
-	 * 对玩家列表进行牌型判断、值获取及排序 
-	 * 每副牌的三张牌都已经按照数字从大到小排序
+	 * 对玩家列表进行牌型判断、值获取及排序 每副牌的三张牌都已经按照数字从大到小排序
 	 * 
-	 * @param playersInput  一组牌
+	 * @param playersInput
+	 *            一组牌
 	 */
 	public void sortRegularPlayers(List<Player> playersInput) {
 		for (Player player : playersInput) {
@@ -55,10 +57,10 @@ public class PlayerComparator implements Comparator<Player> {
 	}
 
 	/**
-	 * 对玩家列表进行牌型判断、值获取及排序 
-	 * 每副牌的三张牌没有按照从大到小排序
+	 * 对玩家列表进行牌型判断、值获取及排序 每副牌的三张牌没有按照从大到小排序
 	 * 
-	 * @param playersInput 一组牌
+	 * @param playersInput
+	 *            一组牌
 	 */
 	public void sortUnRegularPlayers(List<Player> playersInput) {
 		for (Player player : playersInput) {

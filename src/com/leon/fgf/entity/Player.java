@@ -13,6 +13,7 @@ public class Player {
 	private int type;
 	// 是否为特殊牌
 	private boolean isSpecial = false;
+	// A32也是顺子，比花色时，从3开始比较
 	private boolean isA32 = false;
 	// 牌绝对值大小
 	private int value;
