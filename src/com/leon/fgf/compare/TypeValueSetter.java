@@ -20,7 +20,7 @@ public class TypeValueSetter {
 	}
 
 	// 判断牌型、计算牌型绝对值大小
-	public Player regPlayerType(Player player) {
+	public void regPlayerType(Player player) {
 		if (isFlush(player)) {
 			if (isStraight(player)) {// 同花顺
 				player.setType(PlayerType.STRAIGHT_FLUSH);
@@ -49,7 +49,6 @@ public class TypeValueSetter {
 				player.setSpecial(true);
 			}
 		}
-		return player;
 	}
 
 	// 是否同花
