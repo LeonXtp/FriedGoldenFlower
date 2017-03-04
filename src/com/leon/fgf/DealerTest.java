@@ -39,9 +39,9 @@ public class DealerTest {
 	// 测试手动产生一副牌
 	public static void testManualInputPlayer() {
 		// 使用花色参与大小比较的计算器，并且牌值越大，牌越小
-		PlayerComparator comparator = new PlayerComparator(new FlowerLow2HeighCalculator());
-		Player player = new Player(new Card(Card.FLOWER_SPADE, 2), new Card(Card.FLOWER_HEART, 3),
-				new Card(Card.FLOWER_DIAMOND, 14));
+		PlayerComparator comparator = new PlayerComparator(new Low2HeighCalculator());
+		Player player = new Player(new Card(Card.FLOWER_SPADE, 6), new Card(Card.FLOWER_HEART, 6),
+				new Card(Card.FLOWER_DIAMOND, 6));
 		// 对于一副未按大小排好序的牌，调用setupUnRegularPlayer()方法
 		comparator.setupUnRegularPlayer(player);
 		printPlayerCards(player);
